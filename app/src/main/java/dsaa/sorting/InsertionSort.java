@@ -1,11 +1,15 @@
 package dsaa.sorting;
 
-public class InsertionSort {
-    public int getInt() {
-        return 1;
-    }
-
-    public static void main(String[] args) {
-        System.out.println("hello");
+public class InsertionSort implements Sort {
+    public void sort(int[] A) {
+        for (int i = 1; i < A.length; i++) {
+            int key = A[i];
+            int j = i - 1;
+            while (j >= 0 && A[j] > key) {
+                A[j + 1] = A[j];
+                j--;
+            }
+            A[j + 1] = key;
+        }
     }
 }
