@@ -23,7 +23,7 @@ public class DynamicArray<T> {
      * @return - Element in the DynamicArray at index i.
      */
     public T get(int index) {
-        if (index >= capacity || index < 0) {
+        if (index >= length || index < 0) {
             throw new IndexOutOfBoundsException("Index provided is out of bounds.");
         }
         return array[index];
@@ -36,7 +36,7 @@ public class DynamicArray<T> {
      * @param element - The new element.
      */
     public void set(int index, T element) {
-        if (index >= capacity || index < 0) {
+        if (index >= length || index < 0) {
             throw new IndexOutOfBoundsException("Index provided is out of bounds.");
         }
         array[index] = element;
@@ -49,8 +49,7 @@ public class DynamicArray<T> {
      */
     @SuppressWarnings("unchecked")
     public void add(T element) {
-        length++;
-        if (length >= capacity) {
+        if (length + 1 >= capacity) {
             capacity *= 2;
             T[] newArray = (T[]) new Object[capacity];
             for (int i = 0; i < length; i++) {
@@ -58,31 +57,26 @@ public class DynamicArray<T> {
             }
             array = newArray;
         }
-        array[capacity] = element;
+        array[length] = element;
+        length++;
     }
 
     /**
      * Remove the element at the specified index.
      * 
      * @param index - Index at which to remove element.
+     * @return - The element removed.
      */
-    @SuppressWarnings("unchecked")
-    public void removeAt(int index) {
-        if (index >= capacity || index < 0) {
+    public T removeAt(int index) {
+        if (index >= length || index < 0) {
             throw new IndexOutOfBoundsException("Index provided is out of bounds.");
         }
+        T element = get(index);
         for (int i = index; i < length - 1; i++) {
             array[index] = array[index + 1];
         }
         length--;
-        if (length * 2 < capacity) {
-            capacity /= 2;
-            T[] newArray = (T[]) new Object[capacity];
-            for (int i = 0; i < length; i++) {
-                newArray[i] = array[i];
-            }
-            array = newArray;
-        }
+        return element;
     }
 
     /**
@@ -92,8 +86,8 @@ public class DynamicArray<T> {
      * @return - True if element is found, else false.
      */
     public boolean contains(T element) {
-        for (T item : array) {
-            if (item.equals(element)) {
+        for (int i = 0; i < length; i++) {
+            if (array[i].equals(element)) {
                 return true;
             }
         }
