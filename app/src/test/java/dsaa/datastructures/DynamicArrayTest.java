@@ -66,4 +66,22 @@ public class DynamicArrayTest {
         assertEquals(1, dynamicArray.get(0));
         assertEquals(3, dynamicArray.get(1));
     }
+
+    @Test
+    public void testIsEmpty() {
+        assertTrue(dynamicArray.isEmpty());
+        dynamicArray.add(1);
+        assertFalse(dynamicArray.isEmpty());
+        dynamicArray.removeAt(0);
+        assertTrue(dynamicArray.isEmpty());
+    }
+
+    @Test
+    public void testToString() {
+        assertEquals("[]", dynamicArray.toString());
+        for (int i = 0; i < 3; i++) {
+            dynamicArray.add(i);
+        }
+        assertEquals("[0, 1, 2]", dynamicArray.toString());
+    }
 }

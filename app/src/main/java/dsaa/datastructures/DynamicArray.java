@@ -102,4 +102,32 @@ public class DynamicArray<T> {
     public int size() {
         return length;
     }
+
+    /**
+     * Checks if the DynamicArray is empty.
+     * 
+     * @return - True if empty, otherwise false.
+     */
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
+    /**
+     * Give a string representation of the DynamicArray.
+     * E.g. [1, 2, 3]
+     * 
+     * @return - String of numbers of the array, separated by commas within square
+     *         brackets.
+     */
+    public String toString() {
+        if (isEmpty()) {
+            return "[]";
+        }
+        String arrayStr = "[";
+        for (int i = 0; i < length - 1; i++) {
+            arrayStr += array[i] + ", ";
+        }
+        arrayStr += array[length - 1] + "]";
+        return arrayStr;
+    }
 }
