@@ -1,5 +1,11 @@
 package dsaa.datastructures;
 
+/**
+ * A generically-typed dynamic array that allows the user to add and remove
+ * objects, automatically resizing the underlying array as needed.
+ *
+ * @param <T> the type of elements in this dynamic array
+ */
 public class DynamicArray<T> {
     private final int DEFAULT_CAPACITY = 10;
     private T[] array;
@@ -21,6 +27,7 @@ public class DynamicArray<T> {
      * 
      * @param index - The index provided.
      * @return - Element in the DynamicArray at index i.
+     * @throws IndexOutOfBoundsException if the index is out of bounds
      */
     public T get(int index) {
         if (index >= length || index < 0) {
@@ -34,6 +41,7 @@ public class DynamicArray<T> {
      * 
      * @param index   - The index at which to set the element.
      * @param element - The new element.
+     * @throws IndexOutOfBoundsException if the index is out of bounds
      */
     public void set(int index, T element) {
         if (index >= length || index < 0) {
@@ -66,6 +74,7 @@ public class DynamicArray<T> {
      * 
      * @param index - Index at which to remove element.
      * @return - The element removed.
+     * @throws IndexOutOfBoundsException if the index is out of bounds
      */
     public T removeAt(int index) {
         if (index >= length || index < 0) {
