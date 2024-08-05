@@ -4,7 +4,7 @@ package dsaa.datastructures;
  * A generically-typed dynamic array that allows the user to add and remove
  * objects, automatically resizing the underlying array as needed.
  *
- * @param <T> the type of elements in this dynamic array
+ * @param <T> the type of elements in this DynamicArray.
  */
 public class DynamicArray<T> {
     private final int DEFAULT_CAPACITY = 10;
@@ -25,8 +25,8 @@ public class DynamicArray<T> {
     /**
      * Retrieves element in the array at position i.
      * 
-     * @param index - The index provided.
-     * @return - Element in the DynamicArray at index i.
+     * @param index the index provided.
+     * @return the element in the DynamicArray at index i.
      * @throws IndexOutOfBoundsException if the index is out of bounds
      */
     public T get(int index) {
@@ -39,8 +39,8 @@ public class DynamicArray<T> {
     /**
      * Sets element at index i to be a new element.
      * 
-     * @param index   - The index at which to set the element.
-     * @param element - The new element.
+     * @param index   the index at which to set the element.
+     * @param element the new element.
      * @throws IndexOutOfBoundsException if the index is out of bounds
      */
     public void set(int index, T element) {
@@ -53,7 +53,7 @@ public class DynamicArray<T> {
     /**
      * Add a new element to the end of the DynamicArray.
      * 
-     * @param element - Element to be added.
+     * @param element the element to be added.
      */
     @SuppressWarnings("unchecked")
     public void add(T element) {
@@ -72,8 +72,8 @@ public class DynamicArray<T> {
     /**
      * Remove the element at the specified index.
      * 
-     * @param index - Index at which to remove element.
-     * @return - The element removed.
+     * @param index the index at which to remove element.
+     * @return the element removed.
      * @throws IndexOutOfBoundsException if the index is out of bounds
      */
     public T removeAt(int index) {
@@ -91,8 +91,8 @@ public class DynamicArray<T> {
     /**
      * Checks if the DynamicArray contains a given element.
      * 
-     * @param element - Check if this element is in DynamicArray.
-     * @return - True if element is found, else false.
+     * @param element check if this element is in DynamicArray.
+     * @return true if element is found, else false.
      */
     public boolean contains(T element) {
         for (int i = 0; i < length; i++) {
@@ -106,7 +106,7 @@ public class DynamicArray<T> {
     /**
      * Retrieves the number of elements in the DynamicArray.
      * 
-     * @return - Size of DynamicArray.
+     * @return the size of DynamicArray.
      */
     public int size() {
         return length;
@@ -115,7 +115,7 @@ public class DynamicArray<T> {
     /**
      * Checks if the DynamicArray is empty.
      * 
-     * @return - True if empty, otherwise false.
+     * @return true if empty, otherwise false.
      */
     public boolean isEmpty() {
         return size() == 0;
@@ -125,7 +125,7 @@ public class DynamicArray<T> {
      * Give a string representation of the DynamicArray.
      * E.g. [1, 2, 3]
      * 
-     * @return - String of numbers of the array, separated by commas within square
+     * @return string of numbers of the array, separated by commas within square
      *         brackets.
      */
     public String toString() {
