@@ -96,13 +96,40 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         size++;
     }
 
-    public void remove(int index, T element) {
+    /**
+     * Remove the first instance of the specified element.
+     * 
+     * @param element the element to remove.
+     */
+    public void remove(T element) {
     }
 
-    public void removeFirst(T element) {
+    /**
+     * Remove the first element of the linked list.
+     */
+    public void removeFirst() {
+        if (isEmpty()) {
+            return;
+        }
+        head = head.next;
+        size--;
+        if (head == null) {
+            tail = null;
+        }
     }
 
-    public void removeLast(T element) {
+    /**
+     * Remove the last element of the linked list.
+     */
+    public void removeLast() {
+        if (isEmpty()) {
+            return;
+        }
+        tail = tail.prev;
+        size--;
+        if (tail == null) {
+            head = null;
+        }
     }
 
     /**
