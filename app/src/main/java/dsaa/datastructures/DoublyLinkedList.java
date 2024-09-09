@@ -12,6 +12,9 @@ public class DoublyLinkedList<T> {
     private Node tail;
 
     public DoublyLinkedList() {
+        size = 0;
+        head = null;
+        tail = null;
     }
 
     /**
