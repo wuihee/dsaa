@@ -2,10 +2,11 @@ package dsaa.datastructures;
 
 /**
  * A generic doubly-linked list implementation.
+ * TODO Imeplemnt iterable interface.
  * 
  * @param <T> the type of element to be held in this list.
  */
-public class DoublyLinkedList<T> implements Iterable<T> {
+public class DoublyLinkedList<T> {
     private int size;
     private Node head;
     private Node tail;
@@ -34,7 +35,7 @@ public class DoublyLinkedList<T> implements Iterable<T> {
      * @return true if the linked list contains no elements, otherwise false.
      */
     public boolean isEmpty() {
-        return head == null;
+        return size == 0;
     }
 
     /**
@@ -102,6 +103,22 @@ public class DoublyLinkedList<T> implements Iterable<T> {
      * @param element the element to remove.
      */
     public void remove(T element) {
+        if (isEmpty()) {
+            return;
+        }
+        if (head.value.equals(element)) {
+            size--;
+            removeFirst();
+        } else {
+            Node trav = head;
+            while (trav.next != null) {
+                if (trav.next.value.equals(element)) {
+                    trav.next = trav.next.next;
+                    size--;
+                    return;
+                }
+            }
+        }
     }
 
     /**
