@@ -21,6 +21,9 @@ public class DoublyLinkedList<T> {
      * Remove all elements in the linked list.
      */
     public void clear() {
+        size = 0;
+        head = null;
+        tail = null;
     }
 
     /**
@@ -120,6 +123,7 @@ public class DoublyLinkedList<T> {
                     size--;
                     return;
                 }
+                trav = trav.next;
             }
         }
     }
@@ -132,6 +136,7 @@ public class DoublyLinkedList<T> {
             return;
         }
         head = head.next;
+        head.prev = null;
         size--;
         if (head == null) {
             tail = null;
@@ -146,6 +151,7 @@ public class DoublyLinkedList<T> {
             return;
         }
         tail = tail.prev;
+        tail.next = null;
         size--;
         if (tail == null) {
             head = null;
@@ -167,6 +173,23 @@ public class DoublyLinkedList<T> {
             current = current.next;
         }
         return -1;
+    }
+
+    @Override
+    public String toString() {
+        String linkedList = "[";
+        Node trav = head;
+
+        if (trav == null) {
+            return "[]";
+        }
+
+        while (trav.next != null) {
+            linkedList += trav.value + ", ";
+            trav = trav.next;
+        }
+        linkedList += trav.value + "]";
+        return linkedList;
     }
 
     /**
