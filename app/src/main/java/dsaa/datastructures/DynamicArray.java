@@ -1,12 +1,19 @@
 package dsaa.datastructures;
 
+import java.util.*;
+
 /**
  * A generically-typed dynamic array that allows the user to add and remove
  * objects, automatically resizing the underlying array as needed.
+ * 
+ * T[] array - The underlying data structure.
+ * int capacity - The size of the underlying array.
+ * int length - The length of the user's array.
  *
  * @param <T> the type of elements in this DynamicArray.
  */
-public class DynamicArray<T> {
+public class DynamicArray<T> implements Iterable<T> {
+
     private final int DEFAULT_CAPACITY = 10;
     private T[] array;
     private int capacity;
@@ -138,5 +145,36 @@ public class DynamicArray<T> {
         }
         arrayStr += array[length - 1] + "]";
         return arrayStr;
+    }
+
+    /**
+     * Allows DynamicArray to be iterated over using an enhanced for loop.
+     * 
+     * @return Iterator object.
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new DynamicArrayIterator();
+    }
+
+    /**
+     * Iterator object that adds support for an enhanced for loop for the
+     * DynamicArray.
+     */
+    private class DynamicArrayIterator implements Iterator<T> {
+
+        int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return index < length;
+        }
+
+        @Override
+        public T next() {
+            T value = array[index];
+            index++;
+            return value;
+        }
     }
 }
