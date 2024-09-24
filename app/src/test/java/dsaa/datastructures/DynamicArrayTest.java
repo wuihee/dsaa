@@ -84,4 +84,14 @@ public class DynamicArrayTest {
         }
         assertEquals("[0, 1, 2]", dynamicArray.toString());
     }
+
+    @Test
+    public void testIterator() {
+        for (int i = 0; i < 10; i++) {
+            dynamicArray.add(i);
+        }
+        for (int i : dynamicArray) {
+            System.out.println(i);
+        }
+    }
 }
