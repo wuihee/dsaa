@@ -1,12 +1,13 @@
 package dsaa.datastructures;
 
+import java.util.*;
+
 /**
  * A generic doubly-linked list implementation.
- * TODO Imeplemnt iterable interface.
  * 
  * @param <T> the type of element to be held in this list.
  */
-public class DoublyLinkedList<T> {
+public class DoublyLinkedList<T> implements Iterable<T> {
     private int size;
     private Node head;
     private Node tail;
@@ -179,6 +180,11 @@ public class DoublyLinkedList<T> {
         return -1;
     }
 
+    /**
+     * Returns a string representation of the DoublyLinkedList.
+     * 
+     * @return elements of the linked list in brackets. E.g. [1, 2, 3].
+     */
     @Override
     public String toString() {
         String linkedList = "[";
@@ -194,6 +200,16 @@ public class DoublyLinkedList<T> {
         }
         linkedList += trav.value + "]";
         return linkedList;
+    }
+
+    /**
+     * Allows the use of an enhanced for-loop to iterate over DoublyLinkedList.
+     * 
+     * @return an iterator object.
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new DoublyLinkedListIterator();
     }
 
     /**
@@ -220,6 +236,28 @@ public class DoublyLinkedList<T> {
         @Override
         public String toString() {
             return value.toString();
+        }
+    }
+
+    /**
+     * Iterator for the DoublyLinkedList that specifies how we want to iterate.
+     */
+    private class DoublyLinkedListIterator implements Iterator<T> {
+        private Node current = head;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            T value = current.value;
+            current = current.next;
+            return value;
         }
     }
 }
