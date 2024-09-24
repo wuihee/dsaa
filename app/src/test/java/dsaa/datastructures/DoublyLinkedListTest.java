@@ -95,4 +95,14 @@ public class DoublyLinkedListTest {
         }
         assertEquals("[0, 1, 2]", linkedList.toString());
     }
+
+    @Test
+    public void testIterator() {
+        for (int i = 0; i < 10; i++) {
+            linkedList.addLast(i);
+        }
+        for (int i : linkedList) {
+            System.out.println(i);
+        }
+    }
 }
