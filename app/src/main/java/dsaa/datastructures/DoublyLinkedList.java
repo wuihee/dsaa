@@ -136,7 +136,9 @@ public class DoublyLinkedList<T> {
             return;
         }
         head = head.next;
-        head.prev = null;
+        if (head != null) {
+            head.prev = null;
+        }
         size--;
         if (head == null) {
             tail = null;
@@ -151,7 +153,9 @@ public class DoublyLinkedList<T> {
             return;
         }
         tail = tail.prev;
-        tail.next = null;
+        if (tail != null) {
+            tail.next = null;
+        }
         size--;
         if (tail == null) {
             head = null;
